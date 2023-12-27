@@ -73,7 +73,7 @@ function Plabo() {
                   <input id="existingDiseases" type="text" />
                 </td>
                 <td>
-                  <label htmlFor="therapist">Therapist</label>
+                  <label htmlFor="therapist">Treatment</label>
                   <input id="therapist" type="text" />
                 </td>
               </tr>
