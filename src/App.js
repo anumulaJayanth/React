@@ -10,6 +10,7 @@ import Cyberdyne from "./pages/Cyberdyne";
 import treatments from "./pages/treatments";
 import Tymo from "./pages/Tymo";
 import Plabo from "./pages/Plabo";
+import Output from"./pages/Output";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/treatment/Cyberdyne" exact component={Cyberdyne} />
           <Route path="/treatment/Tymo" exact component={Tymo} />
           <Route path="/treatment/Plabo" exact component={Plabo} />
+          <Route path="/Output" exact component={Output} />
         </Switch>
         <Footer />
       </Router>

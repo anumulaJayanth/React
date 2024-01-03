@@ -1,5 +1,5 @@
 import monoplegia2 from "../assets/old_recurrent.jpg";
-import paraplegia from "../assets/spinal_stimulation.jpg";
+import paraplegia from "../assets/post_haemo.jpg";
 import diplegia from "../assets/right_hemephresis.jpg";
 import quadriplegia from "../assets/advance_neuro.jpg";
 import hemiplegia from "../assets/left.jpg";

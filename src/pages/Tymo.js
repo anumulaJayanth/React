@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import Health from "../assets/Brain.jpg";
+import Health from "../assets/form.jpg";
 import "../styles/Monoplegia.css";
+import { useHistory } from "react-router-dom";
 
 function Tymo() {
   const [isDiabetic, setIsDiabetic] = useState("");
@@ -17,6 +18,10 @@ function Tymo() {
       setNewFieldLabel("");
       setNewFieldValue("");
     }
+  };
+  const history = useHistory();
+  const handleRedirect = () => {
+    history.push("/Output");
   };
 
 
@@ -38,8 +43,8 @@ function Tymo() {
                   <input id="name" type="text" />
                 </td>
                 <td>
-                  <label htmlFor="dob">DOB</label>
-                  <input id="dob" type="date" />
+                  <label htmlFor="age">Age</label>
+                  <input id="age" type="number" />
                 </td>
                 <td>
                   <label htmlFor="date">Date</label>
@@ -50,7 +55,7 @@ function Tymo() {
                   <input id="time" type="time" />
                 </td>
                 <td>
-                  <label htmlFor="sex">Sex</label>
+                  <label htmlFor="sex">Gender</label>
                   <div>
                   <select id="sex"  >
                     <option value="male">Male</option>
@@ -88,6 +93,86 @@ function Tymo() {
                 <td>
                   <label htmlFor="testDuration">Treatment Duration</label>
                   <input id="testDuration" type="text" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label htmlFor="Additional_Support">Additional Support</label>
+                  <input id="Additional_Support" type="text"/>
+                </td>
+                <td>
+                  <label htmlFor="Condition">Condition</label>
+                  <input id="Condition" type="text" />
+                </td>
+                <td>
+                  <label htmlFor="Additional_Condition">Additional Condition</label>
+                  <input id="Additional_Condition" type="text" />
+                </td>
+                <td>
+                  <label htmlFor="Additional_Treatment">Additional Treatment Given</label>
+                  <input id="Additional_Treatment" type="text" />
+                </td>
+                <td>
+                  <label htmlFor="Initial_Stride_length">Initial Stride length</label>
+                  <input id="Initial_Stride_length" type="text" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label htmlFor="ideal_support_left">Initial deviation from ideal single support left</label>
+                  <input id="ideal_support_left" type="text"/>
+                </td>
+                <td>
+                  <label htmlFor="load_res_right">Initial deviation from ideal loading response right</label>
+                  <input id="load_res_right" type="text" />
+                </td>
+                <td>
+                  <label htmlFor="ideal_stance_phase_left">Initial deviation from ideal stance phase left</label>
+                  <input id="ideal_stance_phase_left" type="text" />
+                </td>
+                <td>
+                  <label htmlFor="ideal_stance_phase_right">Initial deviation from ideal stance phase right</label>
+                  <input id="ideal_stance_phase_right" type="text" />
+                </td>
+                <td>
+                  <label htmlFor="ideal_swing_left">Initial deviation from ideal swing left</label>
+                  <input id="ideal_swing_left" type="text" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label htmlFor="ideal_pre_swing_left">Initial deviation from ideal pre swing left</label>
+                  <input id="ideal_pre_swing_left" type="text"/>
+                </td>
+                <td>
+                  <label htmlFor="ideal_single_support_right">Initial deviation from ideal single support right</label>
+                  <input id="ideal_single_support_right" type="text" />
+                </td>
+                <td>
+                  <label htmlFor="ideal_loading_response_left">Initial deviation from ideal loading response left</label>
+                  <input id="ideal_loading_response_left" type="text" />
+                </td>
+                <td>
+                  <label htmlFor="ideal_pre_swing_right">Initial deviation from ideal pre swing right</label>
+                  <input id="ideal_pre_swing_right" type="text" />
+                </td>
+                <td>
+                  <label htmlFor="Time between tests (days)">Time between tests (days)</label>
+                  <input id="Time between tests (days)" type="text" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label htmlFor=",Initial_Cadence">Initial Cadence</label>
+                  <input id="Initial_Cadence" type="text"/>
+                </td>
+                <td>
+                  <label htmlFor="Initial_Velocity">Initial Velocity</label>
+                  <input id="Initial_Velocity" type="text" />
+                </td>
+                <td>
+                  <label htmlFor="ideal_swing_right">Initial deviation from </label>
+                  <input id="ideal_swing_right" type="text" />
                 </td>
               </tr>
 
@@ -271,7 +356,7 @@ function Tymo() {
 
         {/* Submit Button */}
         <div style={{ textAlign: "center", marginTop: "20px",marginBottom: "40px"  }}>
-          <button type="submit">Submit</button>
+        <button onClick={handleRedirect}>Process Inputs</button>
         </div>
       </div>
     </div>
