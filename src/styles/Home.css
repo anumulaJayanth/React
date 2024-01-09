@@ -28,7 +28,17 @@
   background-size: cover;
   background-position: center; 
 
- margin-bottom:40px ;
+ 
+}
+.register{
+  border: none;
+  margin-top: 15px;
+  background-color: #00345f;
+  margin-left: 20px;
+  color: white;
+  border-radius: 6px;
+  padding: 7px;
+
 }
 
 .headerContainer p {
@@ -41,9 +51,9 @@
 .headerContainer button {
   color: black;
   border: none;
-  margin-top:400px;
-  margin-left: 550px;
-  border-radius: 5px;
+  margin-top:20px;
+  margin-left: 540px;
+  border-radius: 6px;
   cursor: pointer;
   justify-content: center;
   background-color: #00345f;

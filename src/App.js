@@ -8,6 +8,7 @@ import Contact from "./pages/Contact";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Cyberdyne from "./pages/Cyberdyne";
 import treatments from "./pages/treatments";
+import pablotests from "./pages/pablotests";
 import Tymo from "./pages/Tymo";
 import Plabo from "./pages/Plabo";
 import Output from"./pages/Output";
@@ -24,6 +25,7 @@ function App() {
           <Route path="/contact" exact component={Contact} />
           <Route path="/treatment/Subtreatments" exact component={treatments} />
           <Route path="/treatment/Cyberdyne" exact component={Cyberdyne} />
+          <Route path="/treatment/pablotests" exact component={pablotests} />
           <Route path="/treatment/Tymo" exact component={Tymo} />
           <Route path="/treatment/Plabo" exact component={Plabo} />
           <Route path="/Output" exact component={Output} />

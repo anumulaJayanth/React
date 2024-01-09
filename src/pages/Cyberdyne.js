@@ -14,11 +14,11 @@ function Cyberdyne() {
       <div className="BannerTop" style={{ backgroundImage: `url(${Health})` }}></div>
 
       <div className="Input_Area">
-      <h2 style={{ textAlign: "center" }}>Please Fill Out The Details</h2>
+      <h2 style={{ textAlign: "center",textDecoration:"Underline" }}>Please Fill Out The Details</h2>
 
         {/* Personal Info */}
         <div style={{ marginBottom: "20px" }}>
-          <h3>Personal Info</h3>
+          <h3 style={{color:'white'}}>Personal Info</h3>
           <table style={{ width: "100%" }}>
             <tbody>
               <tr>

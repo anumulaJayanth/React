@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Health from "../assets/outputs.jpg";
+import Health from "../assets/output6.jpg";
 import "../styles/Monoplegia.css";
-import {useHistory} from "react-router-dom";
+import {useHistory , Link} from "react-router-dom";
 
 function Output() {
   const [isDiabetic, setIsDiabetic] = useState("");
@@ -21,7 +21,7 @@ function Output() {
   };
   const history = useHistory();
   const handleRedirect = () => {
-    history.push("/Output");
+    history.push("/treatment/Tymo");
   };
 
   return (
@@ -29,7 +29,7 @@ function Output() {
       <div className="BannerTop" style={{ backgroundImage: `url(${Health})` }}></div>
 
       <div className="Input_Area">
-      <h2 style={{ textAlign: "center",padding:"10px" }}>Processed Outputs</h2>
+      <h2 style={{ textAlign: "center",padding:"10px",textDecoration:"underline" }}>Processed Outputs</h2>
 
         {/* Personal Info */}
         {/* <div style={{ marginBottom: "20px",padding:"10px" }}>
@@ -68,131 +68,131 @@ function Output() {
         </div> */}
 
         {/* Diseases Enquiry */}
-        <div style={{ marginBottom: "20px",padding:"10px" }}>
-          <h3>Results</h3>
+        <div style={{ marginBottom: "20px",padding:"10px",marginTop:"20px" }}>
+         
           <table style={{ width: "100%" }}>
             <tbody>
               <tr>
                 <td>
-                  <label htmlFor="diabetic">Change in Velocity (km/h)</label>
+                  <label htmlFor="diabetic">Change In Velocity (KM/H)</label>
                   <input id="diabetic" type="text" value={isDiabetic} onChange={handleDiabeticChange} />
                 </td>
                 <td>
-                  <label htmlFor="geneticDiseases">Change in Cadence (Steps/min)</label>
+                  <label htmlFor="geneticDiseases">Change In Cadence (Steps/Min)</label>
                   <input id="geneticDiseases" type="text" />
                 </td>
                 <td>
-                  <label htmlFor="existingDiseases">Change in Stride Length(cm)</label>
+                  <label htmlFor="existingDiseases">Change In Stride Length(CM)</label>
                   <input id="existingDiseases" type="text" />
                 </td>
                 <td>
-                  <label htmlFor="therapist">Change in Cycle duration left</label>
+                  <label htmlFor="therapist">Change In Cycle Duration Left</label>
                   <input id="therapist" type="text" />
                 </td>
                 <td>
-                  <label htmlFor="testDuration">Change in cycle duration right</label>
+                  <label htmlFor="testDuration">Change In Cycle Duration Right</label>
                   <input id="testDuration" type="text" />
                 </td>
               </tr>
               <tr>
                 <td>
-                  <label htmlFor="Additional_Support">Change in Stance Phase Left</label>
+                  <label htmlFor="Additional_Support">Change In Stance Phase Left</label>
                   <input id="Additional_Support" type="text"/>
                 </td>
                 <td>
-                  <label htmlFor="Condition">Change in Stance Phase right</label>
+                  <label htmlFor="Condition">Change In Stance Phase Right</label>
                   <input id="Condition" type="text" />
                 </td>
                 <td>
-                  <label htmlFor="Additional_Condition">Change in Loading response left</label>
+                  <label htmlFor="Additional_Condition">Change In Loading Response Left</label>
                   <input id="Additional_Condition" type="text" />
                 </td>
                 <td>
-                  <label htmlFor="Additional_Treatment">Change in Loading Response right</label>
+                  <label htmlFor="Additional_Treatment">Change In Loading Response Right</label>
                   <input id="Additional_Treatment" type="text" />
                 </td>
                 <td>
-                  <label htmlFor="Initial_Stride_length">Change in Single Support left</label>
+                  <label htmlFor="Initial_Stride_length">Change In Single Support Left</label>
                   <input id="Initial_Stride_length" type="text" />
                 </td>
               </tr>
               <tr>
                 <td>
-                  <label htmlFor="ideal_support_left">Change in Single Support right</label>
+                  <label htmlFor="ideal_support_left">Change In Single Support Right</label>
                   <input id="ideal_support_left" type="text"/>
                 </td>
                 <td>
-                  <label htmlFor="load_res_right">Change in Pre Swing left</label>
+                  <label htmlFor="load_res_right">Change In Pre Swing Left</label>
                   <input id="load_res_right" type="text" />
                 </td>
                 <td>
-                  <label htmlFor="ideal_stance_phase_left">Change in Pre Swing rightt</label>
+                  <label htmlFor="ideal_stance_phase_left">Change In Pre Swing Right</label>
                   <input id="ideal_stance_phase_left" type="text" />
                 </td>
                 <td>
-                  <label htmlFor="ideal_stance_phase_right">Change in Swing phase left</label>
+                  <label htmlFor="ideal_stance_phase_right">Change In Swing Phase Left</label>
                   <input id="ideal_stance_phase_right" type="text" />
                 </td>
                 <td>
-                  <label htmlFor="ideal_swing_left">Change in Swing phase right</label>
+                  <label htmlFor="ideal_swing_left">Change In Swing Phase Right</label>
                   <input id="ideal_swing_left" type="text" />
                 </td>
               </tr>
               <tr>
                 <td>
-                  <label htmlFor="ideal_pre_swing_left">Change in Double Support</label>
+                  <label htmlFor="ideal_pre_swing_left">Change In Double Support</label>
                   <input id="ideal_pre_swing_left" type="text"/>
                 </td>
                 <td>
-                  <label htmlFor="ideal_single_support_right">Change in Angle Foot/Floor Maximum sagittal left</label>
+                  <label htmlFor="ideal_single_support_right">Change In Angle Foot/Floor Maximum Sagittal Left</label>
                   <input id="ideal_single_support_right" type="text" />
                 </td>
                 <td>
-                  <label htmlFor="ideal_loading_response_left">Change in Angle Foot/Floor Maximum sagittal right</label>
+                  <label htmlFor="ideal_loading_response_left">Change In Angle Foot/Floor Maximum Sagittal Right</label>
                   <input id="ideal_loading_response_left" type="text" />
                 </td>
                 <td>
-                  <label htmlFor="ideal_pre_swing_right">Change in Angle Foot/Floor Minimum sagittal left</label>
+                  <label htmlFor="ideal_pre_swing_right">Change In Angle Foot/Floor Minimum Sagittal Left</label>
                   <input id="ideal_pre_swing_right" type="text" />
                 </td>
                 <td>
-                  <label htmlFor="Time between tests (days)">Change in Angle Foot/Floor Minimum sagittal right</label>
+                  <label htmlFor="Time between tests (days)">Change In Angle Foot/Floor Minimum Sagittal Right</label>
                   <input id="Time between tests (days)" type="text" />
                 </td>
               </tr>
               <tr>
                 <td>
-                  <label htmlFor=",Initial_Cadence">Change in Angle Foot/Floor Maximum frontal left</label>
+                  <label htmlFor=",Initial_Cadence">Change In Angle Foot/Floor Maximum Frontal Left</label>
                   <input id="Initial_Cadence" type="text"/>
                 </td>
                 <td>
-                  <label htmlFor="Initial_Velocity">Change in Angle Foot/Floor Maximum frontal right</label>
+                  <label htmlFor="Initial_Velocity">Change In Angle Foot/Floor Maximum Frontal Right</label>
                   <input id="Initial_Velocity" type="text" />
                 </td>
                 <td>
-                  <label htmlFor="ideal_swing_right">Change in Angle Foot/Floor Minimum frontal left</label>
+                  <label htmlFor="ideal_swing_right">Change In Angle Foot/Floor Minimum Frontal Left</label>
                   <input id="ideal_swing_right" type="text" />
                 </td>
                 <td>
-                  <label htmlFor="ideal_swing_right">Change in Angle Foot/Floor Minimum frontal right</label>
+                  <label htmlFor="ideal_swing_right">Change In Angle Foot/Floor Minimum Frontal Right</label>
                   <input id="ideal_swing_right" type="text" />
                 </td>
                 <td>
-                  <label htmlFor="ideal_swing_right">Change in Vertical lift Maximum left</label>
+                  <label htmlFor="ideal_swing_right">Change In Vertical Lift Maximum Left</label>
                   <input id="ideal_swing_right" type="text" />
                 </td>
               </tr>
               <tr>
               <td>
-                  <label htmlFor="ideal_swing_right">Change in Vertical lift Maximum right</label>
+                  <label htmlFor="ideal_swing_right">Change In Vertical Lift Maximum Right</label>
                   <input id="ideal_swing_right" type="text" />
                 </td>
                 <td>
-                  <label htmlFor="ideal_swing_right">Change in Lateral deviation Maximum left</label>
+                  <label htmlFor="ideal_swing_right">Change In Lateral Deviation Maximum Left</label>
                   <input id="ideal_swing_right" type="text" />
                 </td>
                 <td>
-                  <label htmlFor="ideal_swing_right">Change in Lateral deviation Maximum right</label>
+                  <label htmlFor="ideal_swing_right">Change In Lateral Deviation Maximum Right</label>
                   <input id="ideal_swing_right" type="text" />
                 </td>
 
@@ -377,9 +377,12 @@ function Output() {
 
 
         {/* Submit Button */}
-       {/* <div style={{ textAlign: "center", marginTop: "20px",marginBottom: "40px"  }}>
-       <button onClick={handleRedirect}>Go to New Page</button>
-        </div>  */}
+        <div style={{ textAlign: "center", marginTop: "20px",marginBottom: "40px" }}>
+
+<button onClick={handleRedirect}>Back</button>
+
+
+      </div>
       </div>
     </div>
   );

@@ -1,13 +1,22 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import "../styles/Menu.css";
+
 
 
 function MenuItem({ image, title, text, to }) {
   const linkStyle = {
     textDecoration: 'none', // Remove underline
-    color: '#EC595B', // Set text color
+    color: '#00345f', // Set text color
   };
+  const history = useHistory();
+
+  const handleCardClick = (path) => {
+    history.push(path);
+  };
+
  
   
 
@@ -19,7 +28,20 @@ function MenuItem({ image, title, text, to }) {
       <div className="menuItem">
       
         <div style={{ backgroundImage: `url(${image})` }}> </div>
-        <p style={{ color: '#EC595B' }}>{title}</p>
+        <p style={{ color: '#00345f' }}>{title}</p>
+        <div className="learnMoreLink">
+                  <p>
+                    Know More{" "}
+                    <span
+                      className="arrowSymbol"
+                      onClick={() =>
+                        handleCardClick(`/treatment/Subtreatments`)
+                      }
+                    >
+                      &#8594;
+                    </span>
+                  </p>
+                </div>
        
       </div>
     

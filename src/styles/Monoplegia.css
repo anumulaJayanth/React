@@ -9,16 +9,36 @@
     width: 100%;
    
 }  
-  .Monoplegia .Input_Area h2 {
+ .Input_Area h2 {
     font-weight: bold;
-    font-size: 36px;
-    color: black;
-    
+    font-size: 45px;
+    color: #00345f;
+    font-family: sans-serif;
     padding: 25px;
  
    display:flex;
     justify-content: center;
    
+  }
+  .Input_Area label {
+   padding-bottom: 10px;
+   color: #00345f;
+   font-family: poppins;
+   font-size: 18px;
+   font-weight: 600;
+   height:58px;
+}
+.Input_Area input {
+   width: 100%;
+   border-radius: 4px;
+   border: 0.6px solid #00345f;
+   height:30px;
+}
+
+  .Input_Area h3{
+   color:#00345f;
+   font-size:24px;
+   font-weight: bold;
   }
 
  .Input_Area input{
@@ -33,6 +53,8 @@
     border-color: #00345f;
     border-radius: 6px;
     color: white;
+    padding-left:15px;
+    padding-right:15px
     
 
  }

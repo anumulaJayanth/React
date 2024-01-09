@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Health from "../assets/form.jpg";
+import Health from "../assets/outputimage2.jpg";
 import "../styles/Monoplegia.css";
-import { useHistory } from "react-router-dom";
+import { useHistory,Link } from "react-router-dom";
 
 function Tymo() {
   const [isDiabetic, setIsDiabetic] = useState("");
@@ -9,7 +9,7 @@ function Tymo() {
   const [newFieldLabel, setNewFieldLabel] = useState("");
   const [newFieldValue, setNewFieldValue] = useState("");
 
-  const handleDiabeticChange = (event) => {
+  const handleAdditionalSupportChange = (event) => {
     setIsDiabetic(event.target.value);
   };
   const handleAddField = () => {
@@ -20,21 +20,33 @@ function Tymo() {
     }
   };
   const history = useHistory();
-  const handleRedirect = () => {
-    history.push("/Output");
-  };
+  const [name, setName] = useState(""); // Add state for the entered name
+  // ... (rest of your code)
 
+  const handleRedirect = () => {
+    // Retrieve the value from the "Name" input field
+    const enteredName = document.getElementById("name").value;
+
+    // Update the state to store the entered name
+    setName(enteredName);
+
+    // Pass the entered name as a URI parameter in the URL
+    history.push(`/Output?name=${encodeURIComponent(enteredName)}`);
+  };
+  const handleBack = () => {
+    history.push("/treatment/pablotests");
+  };
 
   return (
     <div className="Cyberdyne">
       <div className="BannerTop" style={{ backgroundImage: `url(${Health})` }}></div>
 
       <div className="Input_Area">
-      <h2 style={{ textAlign: "center",padding:"10px" }}>Please Fill Out The Details</h2>
+      <h2 style={{ textAlign: "center",padding:"10px",textDecoration:"underline" }}>Please Fill Out The Details</h2>
 
         {/* Personal Info */}
-        <div style={{ marginBottom: "20px",padding:"10px" }}>
-          <h3>Personal Info</h3>
+        <div style={{ padding:"10px" }}>
+          <h3>Gait Assessment Inputs</h3>
           <table style={{ width: "100%" }}>
             <tbody>
               <tr>
@@ -46,18 +58,11 @@ function Tymo() {
                   <label htmlFor="age">Age</label>
                   <input id="age" type="number" />
                 </td>
-                <td>
-                  <label htmlFor="date">Date</label>
-                  <input id="date" type="date" />
-                </td>
-                <td>
-                  <label htmlFor="time">Time</label>
-                  <input id="time" type="time" />
-                </td>
+                
                 <td>
                   <label htmlFor="sex">Gender</label>
                   <div>
-                  <select id="sex"  >
+                  <select id="sex" style={{borderRadius: "4px",border: "0.6px solid #00345f",height: "30px"}} >
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                   </select></div>
@@ -70,13 +75,13 @@ function Tymo() {
 
         {/* Diseases Enquiry */}
         <div style={{ marginBottom: "20px",padding:"10px" }}>
-          <h3>Diseases Enquiry</h3>
+          
           <table style={{ width: "100%" }}>
             <tbody>
-              <tr>
+              {/* <tr>
                 <td>
                   <label htmlFor="diabetic">Diabetic</label>
-                  <input id="diabetic" type="text" value={isDiabetic} onChange={handleDiabeticChange} />
+                  <input id="diabetic" type="text"  />
                 </td>
                 <td>
                   <label htmlFor="geneticDiseases">Genetic Diseases</label>
@@ -94,87 +99,141 @@ function Tymo() {
                   <label htmlFor="testDuration">Treatment Duration</label>
                   <input id="testDuration" type="text" />
                 </td>
-              </tr>
+              </tr> */}
               <tr>
+                
                 <td>
-                  <label htmlFor="Additional_Support">Additional Support</label>
-                  <input id="Additional_Support" type="text"/>
+                <label htmlFor="Condition">Diabetic</label>
+                <div>
+                  <select id="Condition"  style={{borderRadius: "4px",border: "0.6px solid #00345f",height: "30px",width: "100%"}} value={isDiabetic} onChange={handleAdditionalSupportChange} >
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                    
+                  </select>
+                </div>
                 </td>
                 <td>
-                  <label htmlFor="Condition">Condition</label>
-                  <input id="Condition" type="text" />
+                <label htmlFor="Condition">Smoking</label>
+                <div>
+                  <select id="Condition"   style={{borderRadius: "4px",border: "0.6px solid #00345f",height: "30px", width: "100%"}} value={isDiabetic} onChange={handleAdditionalSupportChange}>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                    
+                  </select>
+                </div>
                 </td>
                 <td>
-                  <label htmlFor="Additional_Condition">Additional Condition</label>
-                  <input id="Additional_Condition" type="text" />
+                <label htmlFor="Condition">Alcholic</label>
+                <div>
+                  <select id="Condition"  style={{borderRadius: "4px",border: "0.6px solid #00345f",height: "30px",width: "100%"}}  value={isDiabetic} onChange={handleAdditionalSupportChange}>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                    
+                  </select>
+                </div>
                 </td>
                 <td>
-                  <label htmlFor="Additional_Treatment">Additional Treatment Given</label>
-                  <input id="Additional_Treatment" type="text" />
+                <label htmlFor="Additional_Support">Additional Support</label>
+                <div>
+                  <select id="Additional_Support"  style={{borderRadius: "4px",border: "0.6px solid #00345f",height: "30px",width: "100%"}}  value={isDiabetic} onChange={handleAdditionalSupportChange}>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select>
+                </div>
+                </td>
+                <td>
+                <label htmlFor="Additional_Condition">Additional Condition</label>
+                <div>
+                  <select id="Additional_Condition"  style={{borderRadius: "4px",border: "0.6px solid #00345f",height: "30px",width: "100%"}} value={isDiabetic} onChange={handleAdditionalSupportChange}>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select>
+                </div>
+                </td>
+                
+
+                </tr>
+                <tr>
+                <td>
+                <label htmlFor="Additional_Treatment">Additional Treatment Given</label>
+                <div>
+                  <select id="Additional_Treatment"  style={{borderRadius: "4px",border: "0.6px solid #00345f",height: "30px",width: "100%"}}  value={isDiabetic} onChange={handleAdditionalSupportChange}>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select>
+                </div>
+                </td>
+                <td>
+                  <label htmlFor="Initial_Stride_length">Time Between Tests</label>
+                  <input id="Initial_Stride_length" type="text" />
+                </td>
+
+               
+                <td>
+                  <label htmlFor="Initial_Stride_length">Initial Velocity</label>
+                  <input id="Initial_Stride_length" type="text" />
+                </td>
+                <td>
+                  <label htmlFor="Initial_Stride_length">Initial Cadence</label>
+                  <input id="Initial_Stride_length" type="text" />
                 </td>
                 <td>
                   <label htmlFor="Initial_Stride_length">Initial Stride length</label>
                   <input id="Initial_Stride_length" type="text" />
                 </td>
-              </tr>
-              <tr>
+                </tr>
+                <tr>
                 <td>
-                  <label htmlFor="ideal_support_left">Initial deviation from ideal single support left</label>
-                  <input id="ideal_support_left" type="text"/>
-                </td>
-                <td>
-                  <label htmlFor="load_res_right">Initial deviation from ideal loading response right</label>
-                  <input id="load_res_right" type="text" />
-                </td>
-                <td>
-                  <label htmlFor="ideal_stance_phase_left">Initial deviation from ideal stance phase left</label>
+                  <label htmlFor="ideal_stance_phase_left">Initial Deviation From Ideal Stance Phase Left</label>
                   <input id="ideal_stance_phase_left" type="text" />
                 </td>
                 <td>
-                  <label htmlFor="ideal_stance_phase_right">Initial deviation from ideal stance phase right</label>
+                  <label htmlFor="ideal_stance_phase_right">Initial Deviation From Ideal Stance Phase Right</label>
                   <input id="ideal_stance_phase_right" type="text" />
                 </td>
-                <td>
-                  <label htmlFor="ideal_swing_left">Initial deviation from ideal swing left</label>
-                  <input id="ideal_swing_left" type="text" />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label htmlFor="ideal_pre_swing_left">Initial deviation from ideal pre swing left</label>
-                  <input id="ideal_pre_swing_left" type="text"/>
-                </td>
-                <td>
-                  <label htmlFor="ideal_single_support_right">Initial deviation from ideal single support right</label>
-                  <input id="ideal_single_support_right" type="text" />
-                </td>
-                <td>
-                  <label htmlFor="ideal_loading_response_left">Initial deviation from ideal loading response left</label>
+                
+             
+              <td>
+                  <label htmlFor="ideal_loading_response_left">Initial Deviation From Ideal Loading Response Left</label>
                   <input id="ideal_loading_response_left" type="text" />
                 </td>
                 <td>
-                  <label htmlFor="ideal_pre_swing_right">Initial deviation from ideal pre swing right</label>
+                  <label htmlFor="load_res_right">Initial Deviation From Ideal Loading Response Right</label>
+                  <input id="load_res_right" type="text" />
+                </td>
+                <td>
+                  <label htmlFor="ideal_support_left">Initial Deviation From Ideal Single Support Left</label>
+                  <input id="ideal_support_left" type="text"/>
+                </td>
+                </tr>
+                <tr>
+
+                <td>
+                  <label htmlFor="ideal_single_support_right">Initial Deviation From Ideal Single Support Right</label>
+                  <input id="ideal_single_support_right" type="text" />
+                </td>
+                
+                <td>
+                  <label htmlFor="ideal_pre_swing_left">Initial Deviation From Ideal Pre Swing Left</label>
+                  <input id="ideal_pre_swing_left" type="text"/>
+                </td>
+               
+               
+                <td>
+                  <label htmlFor="ideal_pre_swing_right">Initial Deviation From Ideal Pre Swing Right</label>
                   <input id="ideal_pre_swing_right" type="text" />
                 </td>
+                
                 <td>
-                  <label htmlFor="Time between tests (days)">Time between tests (days)</label>
-                  <input id="Time between tests (days)" type="text" />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label htmlFor=",Initial_Cadence">Initial Cadence</label>
-                  <input id="Initial_Cadence" type="text"/>
+                  <label htmlFor="ideal_swing_left">Initial Deviation From Ideal Swing Left</label>
+                  <input id="ideal_swing_left" type="text" />
                 </td>
                 <td>
-                  <label htmlFor="Initial_Velocity">Initial Velocity</label>
-                  <input id="Initial_Velocity" type="text" />
-                </td>
-                <td>
-                  <label htmlFor="ideal_swing_right">Initial deviation from </label>
+                  <label htmlFor="ideal_swing_left">Initial Deviation From Ideal Swing Right</label>
                   <input id="ideal_swing_right" type="text" />
                 </td>
               </tr>
+             
 
             </tbody>
           </table>
@@ -355,9 +414,14 @@ function Tymo() {
 
 
         {/* Submit Button */}
-        <div style={{ textAlign: "center", marginTop: "20px",marginBottom: "40px"  }}>
-        <button onClick={handleRedirect}>Process Inputs</button>
+        
+        <div style={{  marginTop: "20px",marginBottom: "40px", display: "flex",alignItems: "center",justifyContent: "space-between" }}>
+
+  <button onClick={handleBack}>Back</button>
+  <button onClick={handleRedirect}>Process Inputs</button>
+
         </div>
+       
       </div>
     </div>
   );

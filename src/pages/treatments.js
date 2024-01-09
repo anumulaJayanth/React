@@ -2,8 +2,10 @@
 import React from "react";
 import { MenuList1 } from "../helpers/MenuList";
 import MenuItem from "../components/Subtreatments";
-import { useHistory } from "react-router-dom";
+import { useHistory,Link } from "react-router-dom";
+
 import "../styles/Menu.css";
+
 
 function Menu() {
   const history = useHistory();
@@ -11,6 +13,12 @@ function Menu() {
   const handleCardClick = (path) => {
     history.push(path);
   };
+
+  const handleRedirect = () => {
+    history.push("/");
+  };
+
+
   return (
     <div >
         <div className="menu">
@@ -30,7 +38,12 @@ function Menu() {
         })}
       </div>
       </div>
-      
+      <div style={{ textAlign: "center", marginTop: "20px",marginBottom: "40px"  }}>
+
+  <button onClick={handleRedirect}>Back</button>
+
+
+        </div>
     </div>
     
 

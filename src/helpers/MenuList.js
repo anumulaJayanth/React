@@ -12,107 +12,128 @@ import hemi from "../assets/cyberdyna.jpg";
 import br from "../assets/luna_emg.jpg";
 import non from "../assets/excersice.jpg";
 import pablo from "../assets/pablo.jpg";
-import tymo from "../assets/tymo.jpg";
-
+import tymo from "../assets/TYMO.jpg";
+import grip from "../assets/grip.jpg";
+import range from "../assets/rangeofmotion.jpg";
+import gait from "../assets/gait.jpg"
+import vibro from "../assets/VIBRAMOOV.jpg"
 export const MenuList = [
   {
     image:monoplegia2,
-    title: "OLD RECURRENT STROKE",
-    text:"The main objective is to develop an AI/ML algorithm which helps in predicting the treatment",
+    title: "STROKE",
+    text:"Read More",
     to:"Subtreatments",
     
   },
   {
     image:paraplegia,
-    title: "POST PARTUM HAEMORRAGIC STROKE",
-    text:"The main objective is to develop an AI/ML algorithm which helps in predicting the treatment",
+    title: "INCOMPLETE SPINAL CORD INJURY",
+    text:"Read More",
     to:"Subtreatments",
   },
   {
     image:diplegia,
-    title: "RIGHT HEMIPARESIS",
-    text:"The main objective is to develop an AI/ML algorithm which helps in predicting the treatment",
+    title: "MULTIPLE SCLEROSIS",
+    text:"Read More",
     to:"Subtreatments",
   },
   {
     image:quadriplegia,
-    title: "CERVICAL MYELO RADICULO POLYNEUROPATHY",
-    text:"The main objective is to develop an AI/ML algorithm which helps in predicting the treatment",
+    title: "PARKINSONS DISEASE",
+    text:"Read More",
     to:"Subtreatments",
   },
   {
     image:hemiplegia,
-    title: "LEFT THALAMIC HEMORRHAGIC STROKE ",
-    text:"The main objective is to develop an AI/ML algorithm which helps in predicting the treatment",
+    title: "MOTOR NEURON DISEASE",
+    text:"Read More",
     to:"Subtreatments",
   },
   {
     image:brain,
-    title: "TRANSVERSE MYELITIS",
-    text:"The main objective is to develop an AI/ML algorithm which helps in predicting the treatment",
+    title: "ATAXIA",
+    text:"Read More",
     to:"Subtreatments",
   },
   {
     image:brain,
-    title: "Diseases",
-    text:"The main objective is to develop an AI/ML algorithm which helps in predicting the treatment",
+    title: "CEREBRAL PALSY",
+    text:"Read More",
+    to:"Subtreatments",
+  },
+  {
+    image:brain,
+    title: "TRAUMATIC BRAIN INJURY",
+    text:"Read More",
     to:"Subtreatments",
   },
 ];
 export const MenuList1 = [
   {
     image:mono,
-    title: "ADVANCE NEURO ROBOTIC REHABILITATION",
+    title: " CYBERDYNE HYBRID ASSISTED LIMB",
     text:"The main objective is to develop an AI/ML algorithm which helps in predicting the treatment",
-    to:"Cyberdyne",
+    to:"Tymo",
     
   },
   {
     image:parap,
-    title: "RTMS",
+    title: "LUNA EMG",
     text:"The main objective is to develop an AI/ML algorithm which helps in predicting the treatment",
     to:"Luna",
   },
   {
-    image:dip,
-    title: "NON-INVASIVE SPINAL STIMULATION ",
+    image:vibro,
+    title: "VIBRAMOOV",
     text:"The main objective is to develop an AI/ML algorithm which helps in predicting the treatment",
     to:"HAL_Lumbar_Type",
   },
   {
     image:quadri,
-    title: "BOTOX",
+    title: "RTMS",
     text:"The main objective is to develop an AI/ML algorithm which helps in predicting the treatment",
     to:"Vibramoov",
   },
   {
     image:hemi,
-    title: "CYBERDYNE",
+    title:"RECOVERIX PRO",
     text:"The main objective is to develop an AI/ML algorithm which helps in predicting the treatment",
     to:"neurotechnology",
   },
   {
     image:br,
-    title: "LUNA EMG",
-    text:"The main objective is to develop an AI/ML algorithm which helps in predicting the treatment",
-    to:"Connectomi",
-  },
-  {
-    image:non,
-    title: "EXERCISES WITH NON–INVASIVE  ",
-    text:"The main objective is to develop an AI/ML algorithm which helps in predicting the treatment",
-    to:"Plabo",
-  },
-  {
-    image:pablo,
     title: "PABLO",
     text:"The main objective is to develop an AI/ML algorithm which helps in predicting the treatment",
-    to:"Tymo",
+    to:"pablotests",
   },
   {
     image:tymo,
     title: "TYMO",
     text:"The main objective is to develop an AI/ML algorithm which helps in predicting the treatment",
-    to:"FES Bike",
+    to:"Plabo",
   }
 ];
+
+export const MenuList2 =[
+  {
+    image:grip,
+    title: "Grip",
+    text:"The main objective is to develop an AI/ML algorithm which helps in predicting the treatment",
+    to:"Tymo",
+  },
+  {
+    image:range,
+    title: "Range Of Motion",
+    text:"The main objective is to develop an AI/ML algorithm which helps in predicting the treatment",
+    to:"Tymo",
+  },
+  {
+    image:gait,
+    title: "Gait Assessment",
+    text:"The main objective is to develop an AI/ML algorithm which helps in predicting the treatment",
+    to:"Tymo",
+  }
+
+
+];
+

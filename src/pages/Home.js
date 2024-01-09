@@ -20,7 +20,7 @@ const carouselImages = [
 
 function Home() {
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -42,7 +42,15 @@ function Home() {
                  
                           }}
               >
-                <div
+               
+              </div>
+
+            </div>
+           
+          ))}
+        </Slider>
+
+        <div
                   className="headerContainer"
                   // style={{
                   //   width: "auto",
@@ -55,10 +63,7 @@ function Home() {
                     <button style={{alignItems: "center"}}>Book</button>
                   </Link>
                 </div>
-              </div>
-            </div>
-          ))}
-        </Slider>
+
       </div>
 
      

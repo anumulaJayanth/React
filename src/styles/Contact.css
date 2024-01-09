@@ -22,10 +22,11 @@
 
 .contact .rightSide h1 {
   font-family: "roboto sans";
-  color:#FD9B41;
+  color:#00345f;
   font-weight: bold;
-  font-size: 50px;
+  font-size: 45px;
   margin-left: 30px;
+
 
 }
 
@@ -55,8 +56,8 @@ form textarea {
 }
 input::placeholder,
 textarea::placeholder {
-  font-weight: bold;
-  color: black;
+  font-weight: 20px;
+  color: rgba(0, 0, 0, 0.555);
   font-family: Arial, Helvetica, sans-serif;
 }
 form input:focus,
@@ -66,7 +67,8 @@ textarea:focus {
 
 form label {
   margin-top: 15px;
-  color: grey;
+  color: #00345f;
+  font-weight: bold;
 }
 
 form button {
@@ -74,8 +76,9 @@ form button {
   width: 140px;
   height: 40px;
   border: none;
-  background-color: #121619;
+  background-color: #00345f;
   color: whitesmoke;
   font-size: 15px;
   cursor: pointer;
+  border-radius: 6px;
 }
