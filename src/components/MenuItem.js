@@ -29,9 +29,9 @@ function MenuItem({ image, title, text, to }) {
       
         <div style={{ backgroundImage: `url(${image})` }}> </div>
         <p style={{ color: '#00345f' }}>{title}</p>
-        <div className="learnMoreLink">
+        <div className="learnMoreLink" style={{border:"none"}}>
                   <p>
-                    Know More{" "}
+                    Modailities{" "}
                     <span
                       className="arrowSymbol"
                       onClick={() =>

@@ -46,6 +46,11 @@ font-family: roboto;
   border-bottom: 2px solid #00345f;
 
 }
+
+
+
+
+
 .App button{
     padding:10px;
     background-color: #00345f;
@@ -75,7 +80,10 @@ font-family: roboto;
   height: 350px;
   margin: 20px;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid #00345f;
 }
+
+
 .menuItem:hover {
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.5);
   transition: 0.3s ease-in;
@@ -90,6 +98,7 @@ font-family: roboto;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  border-bottom: 1px solid #00345f;
 }
 
 
@@ -99,6 +108,9 @@ font-family: roboto;
  font-weight: bold;
  font-family: 'Poppins';
  padding-top: 16px;
+ height:70px;
+ text-align: center;
+    width: 80%;
 }
 
 @media only screen and (max-width: 1300px) {
@@ -113,7 +125,7 @@ font-family: roboto;
   }
 }
 .learnMoreLink {
-  
+  border:none;
   align-items: center;
   justify-content: flex-end;
   margin-top: 10px;

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Health from "../assets/outputimage2.jpg";
 import "../styles/Monoplegia.css";
 import { useHistory,Link } from "react-router-dom";
+import axios from 'axios';
 
 function Tymo() {
   const [isDiabetic, setIsDiabetic] = useState("");

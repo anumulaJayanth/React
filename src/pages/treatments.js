@@ -22,7 +22,7 @@ function Menu() {
   return (
     <div >
         <div className="menu">
-      <h1 className="menuTitle">Our Treatments</h1>
+      <h1 className="menuTitle">Modalities</h1>
       <div className="menuList">
         {MenuList1.map((menuItem, key) => {
           return (

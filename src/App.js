@@ -13,6 +13,7 @@ import Tymo from "./pages/Tymo";
 import Plabo from "./pages/Plabo";
 import Output from"./pages/Output";
 import react from"./pages/react";
+import OutputComponent from"./pages/outputc";
 function App() {
   return (
     <div className="App">
@@ -30,6 +31,7 @@ function App() {
           <Route path="/treatment/Plabo" exact component={Plabo} />
           <Route path="/Output" exact component={Output} />
           <Route path="/react" exact component={react} />
+          <Route path="/outputc" exact component={OutputComponent} />
         </Switch>
         <Footer />
       </Router>
