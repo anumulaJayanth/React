@@ -6,38 +6,37 @@ import axios from 'axios';
 
 function Tymo() {
   const [inputValues, setInputValues] = useState({
-    name: '',
-    age: '',
-    sex:'',
     Diabetic:'',
     Smoking:'',
-    Alcholic:'',
+    Alcoholic:'',
     Additional_Support:'',
     Additional_Condition:'',
-    Additional_Treatment:'',
-    Time_Between:'',
-    IntialVelocity:'',
+    Additional_Treatment_Given:'',
+    Gender:'',
+    Age:'',
+    Time_Between_Tests:'',
+    Initial_Velocity:'',
     Initial_Cadence:'',
-   Initial_Stride_length:'',
-    ideal_stance_phase_left:'',
-    ideal_stance_phase_right:'',
-    ideal_loading_response_left:'',
-    load_res_right:'',
-    ideal_support_left:'',
-    ideal_single_support_right:'',
-    ideal_pre_swing_left:'',
-    ideal_pre_swing_right:'',
-    ideal_swing_left:'',
-    ideal_swing_right:''
+    Initial_Stride_Length:'',
+    Initial_Deviation_From_Ideal_Stance_Phase_Left:'',
+    Initial_Deviation_From_Ideal_Stance_Phase_Right:'',
+    Initial_Deviation_From_Ideal_Loading_Response_Left:'',
+    Initial_Deviation_From_Ideal_Loading_Response_Right:'',
+    Initial_Deviation_From_Ideal_Single_Support_Left:'',
+    Initial_Deviation_From_Ideal_Single_Support_Right:'',
+    Initial_Deviation_From_Ideal_Pre_Swing_Left:'',
+    Initial_Deviation_From_Ideal_Pre_Swing_Right:'',
+    Initial_Deviation_From_Ideal_Swing_Left:'',
+    Initial_Deviation_From_Ideal_Swing_Right:''
 
 
   }); 
   
   const history = useHistory();
   const handleRedirect = () => {
-  const integerValues = Object.values(inputValues).map(value => value);
-    console.log('Sending data to Flask server:', integerValues);
-    axios.post('http://localhost:5000/process_data', { data: integerValues })
+
+    console.log('Sending data to Flask server:', inputValues);
+    axios.post('http://localhost:5000/process_data', { data: inputValues })
       .then(response => {
         console.log('Server response:', response.data);
         history.push({
@@ -78,17 +77,17 @@ function Tymo() {
                   <input type="text" name="name" id="name" value={inputValues.name}  onChange={handleChange}/>
                 </td>
                 <td>
-                  <label htmlFor="age">Age</label>
-                  <input type="number" name="age"  id="age" value={inputValues.age} onChange={handleChange}/>
+                  <label htmlFor="Age">Age</label>
+                  <input type="number" name="Age"  id="Age" value={inputValues.Age} onChange={handleChange}/>
                 </td>
                 
                 <td>
-                  <label htmlFor="sex">Gender</label>
+                  <label htmlFor="Gender">Gender</label>
                   <div>
-                  <select name="sex" value={inputValues.sex} onChange={handleChange} id="sex" style={{borderRadius: "4px",border: "0.6px solid #00345f",height: "30px"}} >
+                  <select name="Gender" value={inputValues.Gender} onChange={handleChange} id="Gender" style={{borderRadius: "4px",border: "0.6px solid #00345f",height: "30px"}} >
                   <option value="" disabled>Select</option>
-                    <option name="sex"  value="male">Male</option>
-                    <option name="sex"  value="female">Female</option>
+                    <option name="gender"  value="male">Male</option>
+                    <option name="gender"  value="female">Female</option>
                   </select></div>
                 </td>
               </tr>
@@ -125,10 +124,10 @@ function Tymo() {
                 </div>
                 </td>
                 <td>
-                <label htmlFor="Alcholic">Alcholic</label>
+                <label htmlFor="Alcoholic">Alcoholic</label>
                 <div>
                  
-               <select id="Alcholic" name="Alcholic" onChange = {handleChange} value = {inputValues.Alcholic} style={{borderRadius: "4px",border: "0.6px solid #00345f",height: "30px",width: "100%"}}  >
+               <select id="Alcoholic" name="Alcoholic" onChange = {handleChange} value = {inputValues.Alcoholic} style={{borderRadius: "4px",border: "0.6px solid #00345f",height: "30px",width: "100%"}}  >
                <option  value="" disabled >Select</option>
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
@@ -161,9 +160,9 @@ function Tymo() {
                 </tr>
                 <tr>
                 <td>
-                <label htmlFor="Additional_Treatment">Additional Treatment Given</label>
+                <label htmlFor="Additional_Treatment_Given">Additional Treatment Given</label>
                 <div>
-                  <select id="Additional_Treatment" name='Additional_Treatment'  style={{borderRadius: "4px",border: "0.6px solid #00345f",height: "30px",width: "100%"}}  value={inputValues.Additional_Treatment} onChange={handleChange}>
+                  <select id="Additional_Treatment_Given" name='Additional_Treatment_Given'  style={{borderRadius: "4px",border: "0.6px solid #00345f",height: "30px",width: "100%"}}  value={inputValues.Additional_Treatment_Given} onChange={handleChange}>
                   <option  value="" disabled >Select</option>
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
@@ -171,71 +170,71 @@ function Tymo() {
                 </div>
                 </td>
                 <td>
-                  <label htmlFor="Time_Between">Time Between Tests</label>
-                  <input id="Time_Between" name = "Time_Between" type="number" value={inputValues.Time_Between}   onChange={handleChange}/>
+                  <label htmlFor="Time_Between_Tests">Time Between Tests</label>
+                  <input id="Time_Between_Tests" name = "Time_Between_Tests" type="number" value={inputValues.Time_Between_Tests}   onChange={handleChange}/>
                 </td>
                 <td>
-                  <label htmlFor="IntialVelocity">Initial Velocity</label>
-                  <input name="IntialVelocity" value={inputValues.IntialVelocity} onChange={handleChange}  id="IntialVelocity" type="number" />
+                  <label htmlFor="Initial_Velocity">Initial Velocity</label>
+                  <input name="Initial_Velocity" value={inputValues.Initial_Velocity} onChange={handleChange}  id="Initial_Velocity" type="number" />
                 </td>
                 <td>
                   <label htmlFor="Initial_Cadence">Initial Cadence</label>
                   <input id="Initial_Cadence" name="Initial_Cadence" value={inputValues.Initial_Cadence} onChange={handleChange} type="number" />
                 </td>
                 <td>
-                  <label htmlFor="Initial_Stride_length">Initial Stride length</label>
-                  <input id="Initial_Stride_length" name="Initial_Stride_length" value={inputValues.Initial_Stride_length} onChange={handleChange} type="number"/>
+                  <label htmlFor="Initial_Stride_Length">Initial Stride Length</label>
+                  <input id="Initial_Stride_Length" name="Initial_Stride_Length" value={inputValues.Initial_Stride_Length} onChange={handleChange} type="number"/>
                 </td>
                 </tr>
                 <tr>
                 <td>
-                  <label htmlFor="ideal_stance_phase_left">Initial Deviation From Ideal Stance Phase Left</label>
-                  <input id="ideal_stance_phase_left" name="ideal_stance_phase_left" value={inputValues.ideal_stance_phase_left} onChange={handleChange} type="number" />
+                  <label htmlFor="Initial_Deviation_From_Ideal_Stance_Phase_Left">Initial Deviation From Ideal Stance Phase Left</label>
+                  <input id="Initial_Deviation_From_Ideal_Stance_Phase_Left" name="Initial_Deviation_From_Ideal_Stance_Phase_Left" value={inputValues.Initial_Deviation_From_Ideal_Stance_Phase_Left} onChange={handleChange} type="number" />
                 </td>
                 <td>
-                  <label htmlFor="ideal_stance_phase_right">Initial Deviation From Ideal Stance Phase Right</label>
-                  <input id="ideal_stance_phase_right" name="ideal_stance_phase_right" value={inputValues.ideal_stance_phase_right} onChange={handleChange} type="number" />
+                  <label htmlFor="Initial_Deviation_From_Ideal_Stance_Phase_Right">Initial Deviation From Ideal Stance Phase Right</label>
+                  <input id="Initial_Deviation_From_Ideal_Stance_Phase_Right" name="Initial_Deviation_From_Ideal_Stance_Phase_Right" value={inputValues.Initial_Deviation_From_Ideal_Stance_Phase_Right} onChange={handleChange} type="number" />
                 </td>
                 
              
               <td>
-                  <label htmlFor="ideal_loading_response_left">Initial Deviation From Ideal Loading Response Left</label>
-                  <input id="ideal_loading_response_left" name="ideal_loading_response_left" value={inputValues.ideal_loading_response_left} onChange={handleChange} type="number" />
+                  <label htmlFor="Initial_Deviation_From_Ideal_Loading_Response_Left">Initial Deviation From Ideal Loading Response Left</label>
+                  <input id="Initial_Deviation_From_Ideal_Loading_Response_Left" name="Initial_Deviation_From_Ideal_Loading_Response_Left" value={inputValues.Initial_Deviation_From_Ideal_Loading_Response_Left} onChange={handleChange} type="number" />
                 </td>
                 <td>
-                  <label htmlFor="load_res_right">Initial Deviation From Ideal Loading Response Right</label>
-                  <input id="load_res_right" name="load_res_right" value={inputValues.load_res_right} onChange={handleChange} type="number" />
+                  <label htmlFor="Initial_Deviation_From_Ideal_Loading_Response_Right">Initial Deviation From Ideal Loading Response Right</label>
+                  <input id="Initial_Deviation_From_Ideal_Loading_Response_Right" name="Initial_Deviation_From_Ideal_Loading_Response_Right" value={inputValues.Initial_Deviation_From_Ideal_Loading_Response_Right} onChange={handleChange} type="number" />
                 </td>
                 <td>
-                  <label htmlFor="ideal_support_left">Initial Deviation From Ideal Single Support Left</label>
-                  <input id="ideal_support_left" name="ideal_support_left" value={inputValues.ideal_support_left} onChange={handleChange} type="number"/>
+                  <label htmlFor="Initial_Deviation_From_Ideal_Single_Support_Left">Initial Deviation From Ideal Single Support Left</label>
+                  <input id="Initial_Deviation_From_Ideal_Single_Support_Left" name="Initial_Deviation_From_Ideal_Single_Support_Left" value={inputValues.Initial_Deviation_From_Ideal_Single_Support_Left} onChange={handleChange} type="number"/>
                 </td>
                 </tr>
                 <tr>
 
                 <td>
-                  <label htmlFor="ideal_single_support_right">Initial Deviation From Ideal Single Support Right</label>
-                  <input id="ideal_single_support_right" name="ideal_single_support_right" value={inputValues.ideal_single_support_right} onChange={handleChange} type="number"/>
+                  <label htmlFor="Initial_Deviation_From_Ideal_Single_Support_Right">Initial Deviation From Ideal Single Support Right</label>
+                  <input id="Initial_Deviation_From_Ideal_Single_Support_Right" name="Initial_Deviation_From_Ideal_Single_Support_Right" value={inputValues.Initial_Deviation_From_Ideal_Single_Support_Right} onChange={handleChange} type="number"/>
                 </td>
                 
                 <td>
-                  <label htmlFor="ideal_pre_swing_left">Initial Deviation From Ideal Pre Swing Left</label>
-                  <input id="ideal_pre_swing_left" name="ideal_pre_swing_left" value={inputValues.ideal_pre_swing_left} onChange={handleChange} type="number"/>
+                  <label htmlFor="Initial_Deviation_From_Ideal_Pre_Swing_Left">Initial Deviation From Ideal Pre Swing Left</label>
+                  <input id="Initial_Deviation_From_Ideal_Pre_Swing_Left" name="Initial_Deviation_From_Ideal_Pre_Swing_Left" value={inputValues.Initial_Deviation_From_Ideal_Pre_Swing_Left} onChange={handleChange} type="number"/>
                 </td>
                
                
                 <td>
-                  <label htmlFor="ideal_pre_swing_right">Initial Deviation From Ideal Pre Swing Right</label>
-                  <input id="ideal_pre_swing_right"name="ideal_pre_swing_right" value={inputValues.ideal_pre_swing_right} onChange={handleChange} type="number" />
+                  <label htmlFor="Initial_Deviation_From_Ideal_Pre_Swing_Right">Initial Deviation From Ideal Pre Swing Right</label>
+                  <input id="Initial_Deviation_From_Ideal_Pre_Swing_Right"name="Initial_Deviation_From_Ideal_Pre_Swing_Right" value={inputValues.Initial_Deviation_From_Ideal_Pre_Swing_Right} onChange={handleChange} type="number" />
                 </td>
                 
                 <td>
-                  <label htmlFor="ideal_swing_left">Initial Deviation From Ideal Swing Left</label>
-                  <input id="ideal_swing_left" name="ideal_swing_left" value={inputValues.ideal_swing_left} onChange={handleChange} type="number" />
+                  <label htmlFor="Initial_Deviation_From_Ideal_Swing_Left">Initial Deviation From Ideal Swing Left</label>
+                  <input id="Initial_Deviation_From_Ideal_Swing_Left" name="Initial_Deviation_From_Ideal_Swing_Left" value={inputValues.Initial_Deviation_From_Ideal_Swing_Left} onChange={handleChange} type="number" />
                 </td>
                 <td>
-                  <label htmlFor="ideal_swing_right">Initial Deviation From Ideal Swing Right</label>
-                  <input id="ideal_swing_right" name="ideal_swing_right" value={inputValues.ideal_swing_right} onChange={handleChange} type="number" />
+                  <label htmlFor="Initial_Deviation_From_Ideal_Swing_Right">Initial Deviation From Ideal Swing Right</label>
+                  <input id="Initial_Deviation_From_Ideal_Swing_Right" name="Initial_Deviation_From_Ideal_Swing_Right" value={inputValues.Initial_Deviation_From_Ideal_Swing_Right} onChange={handleChange} type="number" />
                 </td>
               </tr>
              

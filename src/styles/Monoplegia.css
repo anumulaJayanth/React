@@ -9,6 +9,13 @@
     width: 100%;
    
 }  
+
+.Input_Area{
+   background-image: url('https://unsplash.com/photos/a-bunch-of-pink-donuts-are-stacked-on-top-of-each-other-obyYZVKwCNI'); /* Replace 'your-image.jpg' with your actual image path */
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
  .Input_Area h2 {
     font-weight: bold;
     font-size: 45px;

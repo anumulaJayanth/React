@@ -18,6 +18,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background: linear-gradient(to right, #a1ffce1c, #FAFFD1);
+
 }
 
 .contact .rightSide h1 {
