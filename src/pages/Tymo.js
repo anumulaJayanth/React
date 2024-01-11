@@ -5,34 +5,56 @@ import { useHistory,Link } from "react-router-dom";
 import axios from 'axios';
 
 function Tymo() {
-  const [isDiabetic, setIsDiabetic] = useState("");
-  const [additionalFields, setAdditionalFields] = useState([]);
-  const [newFieldLabel, setNewFieldLabel] = useState("");
-  const [newFieldValue, setNewFieldValue] = useState("");
+  const [inputValues, setInputValues] = useState({
+    name: '',
+    age: '',
+    sex:'',
+    Diabetic:'',
+    Smoking:'',
+    Alcholic:'',
+    Additional_Support:'',
+    Additional_Condition:'',
+    Additional_Treatment:'',
+    Time_Between:'',
+    IntialVelocity:'',
+    Initial_Cadence:'',
+   Initial_Stride_length:'',
+    ideal_stance_phase_left:'',
+    ideal_stance_phase_right:'',
+    ideal_loading_response_left:'',
+    load_res_right:'',
+    ideal_support_left:'',
+    ideal_single_support_right:'',
+    ideal_pre_swing_left:'',
+    ideal_pre_swing_right:'',
+    ideal_swing_left:'',
+    ideal_swing_right:''
 
-  const handleAdditionalSupportChange = (event) => {
-    setIsDiabetic(event.target.value);
-  };
-  const handleAddField = () => {
-    if (newFieldLabel && newFieldValue) {
-      setAdditionalFields([...additionalFields, { label: newFieldLabel, value: newFieldValue }]);
-      setNewFieldLabel("");
-      setNewFieldValue("");
-    }
-  };
+
+  }); 
+  
   const history = useHistory();
-  const [name, setName] = useState(""); // Add state for the entered name
-  // ... (rest of your code)
-
   const handleRedirect = () => {
-    // Retrieve the value from the "Name" input field
-    const enteredName = document.getElementById("name").value;
-
-    // Update the state to store the entered name
-    setName(enteredName);
-
-    // Pass the entered name as a URI parameter in the URL
-    history.push(`/Output?name=${encodeURIComponent(enteredName)}`);
+  const integerValues = Object.values(inputValues).map(value => value);
+    console.log('Sending data to Flask server:', integerValues);
+    axios.post('http://localhost:5000/process_data', { data: integerValues })
+      .then(response => {
+        console.log('Server response:', response.data);
+        history.push({
+          pathname: '/Output',
+          state: { updatedData: response.data.updatedData },
+        });
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInputValues({
+      ...inputValues,
+      [name]: value,
+    });
   };
   const handleBack = () => {
     history.push("/treatment/pablotests");
@@ -53,19 +75,20 @@ function Tymo() {
               <tr>
                 <td>
                   <label htmlFor="name">Name</label>
-                  <input id="name" type="text" />
+                  <input type="text" name="name" id="name" value={inputValues.name}  onChange={handleChange}/>
                 </td>
                 <td>
                   <label htmlFor="age">Age</label>
-                  <input id="age" type="number" />
+                  <input type="number" name="age"  id="age" value={inputValues.age} onChange={handleChange}/>
                 </td>
                 
                 <td>
                   <label htmlFor="sex">Gender</label>
                   <div>
-                  <select id="sex" style={{borderRadius: "4px",border: "0.6px solid #00345f",height: "30px"}} >
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
+                  <select name="sex" value={inputValues.sex} onChange={handleChange} id="sex" style={{borderRadius: "4px",border: "0.6px solid #00345f",height: "30px"}} >
+                  <option value="" disabled>Select</option>
+                    <option name="sex"  value="male">Male</option>
+                    <option name="sex"  value="female">Female</option>
                   </select></div>
                 </td>
               </tr>
@@ -76,57 +99,37 @@ function Tymo() {
 
         {/* Diseases Enquiry */}
         <div style={{ marginBottom: "20px",padding:"10px" }}>
-          
           <table style={{ width: "100%" }}>
             <tbody>
-              {/* <tr>
+              <tr>     
                 <td>
-                  <label htmlFor="diabetic">Diabetic</label>
-                  <input id="diabetic" type="text"  />
-                </td>
-                <td>
-                  <label htmlFor="geneticDiseases">Genetic Diseases</label>
-                  <input id="geneticDiseases" type="text" />
-                </td>
-                <td>
-                  <label htmlFor="existingDiseases">Existing Diseases</label>
-                  <input id="existingDiseases" type="text" />
-                </td>
-                <td>
-                  <label htmlFor="therapist">Treatment</label>
-                  <input id="therapist" type="text" />
-                </td>
-                <td>
-                  <label htmlFor="testDuration">Treatment Duration</label>
-                  <input id="testDuration" type="text" />
-                </td>
-              </tr> */}
-              <tr>
-                
-                <td>
-                <label htmlFor="Condition">Diabetic</label>
+                <label htmlFor="Diabetic">Diabetic</label>
                 <div>
-                  <select id="Condition"  style={{borderRadius: "4px",border: "0.6px solid #00345f",height: "30px",width: "100%"}} value={isDiabetic} onChange={handleAdditionalSupportChange} >
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
+                  <select id="Diabetic" name="Diabetic" value={inputValues.Diabetic} onChange={handleChange} style={{borderRadius: "4px",border: "0.6px solid #00345f",height: "30px",width: "100%"}}  >
+                  <option name="Diabetic" value="" disabled>Select</option>
+                    <option name="Diabetic" value="yes">Yes</option>
+                    <option name="Diabetic" value="no">No</option>
                     
                   </select>
                 </div>
                 </td>
                 <td>
-                <label htmlFor="Condition">Smoking</label>
+                <label htmlFor="Smoking">Smoking</label>
                 <div>
-                  <select id="Condition"   style={{borderRadius: "4px",border: "0.6px solid #00345f",height: "30px", width: "100%"}} value={isDiabetic} onChange={handleAdditionalSupportChange}>
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
+                  <select name="Smoking"   style={{borderRadius: "4px",border: "0.6px solid #00345f",height: "30px", width: "100%"}} value={inputValues.Smoking} onChange={handleChange}>
+                  <option  value="" disabled >Select</option>
+                    <option name="Smoking" value="yes">Yes</option>
+                    <option name="Smoking"  value="no">No</option>
                     
                   </select>
                 </div>
                 </td>
                 <td>
-                <label htmlFor="Condition">Alcholic</label>
+                <label htmlFor="Alcholic">Alcholic</label>
                 <div>
-                  <select id="Condition"  style={{borderRadius: "4px",border: "0.6px solid #00345f",height: "30px",width: "100%"}}  value={isDiabetic} onChange={handleAdditionalSupportChange}>
+                 
+               <select id="Alcholic" name="Alcholic" onChange = {handleChange} value = {inputValues.Alcholic} style={{borderRadius: "4px",border: "0.6px solid #00345f",height: "30px",width: "100%"}}  >
+               <option  value="" disabled >Select</option>
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                     
@@ -136,7 +139,8 @@ function Tymo() {
                 <td>
                 <label htmlFor="Additional_Support">Additional Support</label>
                 <div>
-                  <select id="Additional_Support"  style={{borderRadius: "4px",border: "0.6px solid #00345f",height: "30px",width: "100%"}}  value={isDiabetic} onChange={handleAdditionalSupportChange}>
+                  <select id="Additional_Support" name="Additional_Support" value = {inputValues.Additional_Support} onChange = {handleChange}  style={{borderRadius: "4px",border: "0.6px solid #00345f",height: "30px",width: "100%"}}  >
+                  <option  value="" disabled >Select</option>
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                   </select>
@@ -145,7 +149,8 @@ function Tymo() {
                 <td>
                 <label htmlFor="Additional_Condition">Additional Condition</label>
                 <div>
-                  <select id="Additional_Condition"  style={{borderRadius: "4px",border: "0.6px solid #00345f",height: "30px",width: "100%"}} value={isDiabetic} onChange={handleAdditionalSupportChange}>
+                  <select id="Additional_Condition"  name="Additional_Condition" value = {inputValues.Additional_Condition} onChange = {handleChange}  style={{borderRadius: "4px",border: "0.6px solid #00345f",height: "30px",width: "100%"}} >
+                  <option  value="" disabled >Select</option>
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                   </select>
@@ -158,80 +163,79 @@ function Tymo() {
                 <td>
                 <label htmlFor="Additional_Treatment">Additional Treatment Given</label>
                 <div>
-                  <select id="Additional_Treatment"  style={{borderRadius: "4px",border: "0.6px solid #00345f",height: "30px",width: "100%"}}  value={isDiabetic} onChange={handleAdditionalSupportChange}>
+                  <select id="Additional_Treatment" name='Additional_Treatment'  style={{borderRadius: "4px",border: "0.6px solid #00345f",height: "30px",width: "100%"}}  value={inputValues.Additional_Treatment} onChange={handleChange}>
+                  <option  value="" disabled >Select</option>
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                   </select>
                 </div>
                 </td>
                 <td>
-                  <label htmlFor="Initial_Stride_length">Time Between Tests</label>
-                  <input id="Initial_Stride_length" type="text" />
-                </td>
-
-               
-                <td>
-                  <label htmlFor="Initial_Stride_length">Initial Velocity</label>
-                  <input id="Initial_Stride_length" type="text" />
+                  <label htmlFor="Time_Between">Time Between Tests</label>
+                  <input id="Time_Between" name = "Time_Between" type="number" value={inputValues.Time_Between}   onChange={handleChange}/>
                 </td>
                 <td>
-                  <label htmlFor="Initial_Stride_length">Initial Cadence</label>
-                  <input id="Initial_Stride_length" type="text" />
+                  <label htmlFor="IntialVelocity">Initial Velocity</label>
+                  <input name="IntialVelocity" value={inputValues.IntialVelocity} onChange={handleChange}  id="IntialVelocity" type="number" />
+                </td>
+                <td>
+                  <label htmlFor="Initial_Cadence">Initial Cadence</label>
+                  <input id="Initial_Cadence" name="Initial_Cadence" value={inputValues.Initial_Cadence} onChange={handleChange} type="number" />
                 </td>
                 <td>
                   <label htmlFor="Initial_Stride_length">Initial Stride length</label>
-                  <input id="Initial_Stride_length" type="text" />
+                  <input id="Initial_Stride_length" name="Initial_Stride_length" value={inputValues.Initial_Stride_length} onChange={handleChange} type="number"/>
                 </td>
                 </tr>
                 <tr>
                 <td>
                   <label htmlFor="ideal_stance_phase_left">Initial Deviation From Ideal Stance Phase Left</label>
-                  <input id="ideal_stance_phase_left" type="text" />
+                  <input id="ideal_stance_phase_left" name="ideal_stance_phase_left" value={inputValues.ideal_stance_phase_left} onChange={handleChange} type="number" />
                 </td>
                 <td>
                   <label htmlFor="ideal_stance_phase_right">Initial Deviation From Ideal Stance Phase Right</label>
-                  <input id="ideal_stance_phase_right" type="text" />
+                  <input id="ideal_stance_phase_right" name="ideal_stance_phase_right" value={inputValues.ideal_stance_phase_right} onChange={handleChange} type="number" />
                 </td>
                 
              
               <td>
                   <label htmlFor="ideal_loading_response_left">Initial Deviation From Ideal Loading Response Left</label>
-                  <input id="ideal_loading_response_left" type="text" />
+                  <input id="ideal_loading_response_left" name="ideal_loading_response_left" value={inputValues.ideal_loading_response_left} onChange={handleChange} type="number" />
                 </td>
                 <td>
                   <label htmlFor="load_res_right">Initial Deviation From Ideal Loading Response Right</label>
-                  <input id="load_res_right" type="text" />
+                  <input id="load_res_right" name="load_res_right" value={inputValues.load_res_right} onChange={handleChange} type="number" />
                 </td>
                 <td>
                   <label htmlFor="ideal_support_left">Initial Deviation From Ideal Single Support Left</label>
-                  <input id="ideal_support_left" type="text"/>
+                  <input id="ideal_support_left" name="ideal_support_left" value={inputValues.ideal_support_left} onChange={handleChange} type="number"/>
                 </td>
                 </tr>
                 <tr>
 
                 <td>
                   <label htmlFor="ideal_single_support_right">Initial Deviation From Ideal Single Support Right</label>
-                  <input id="ideal_single_support_right" type="text" />
+                  <input id="ideal_single_support_right" name="ideal_single_support_right" value={inputValues.ideal_single_support_right} onChange={handleChange} type="number"/>
                 </td>
                 
                 <td>
                   <label htmlFor="ideal_pre_swing_left">Initial Deviation From Ideal Pre Swing Left</label>
-                  <input id="ideal_pre_swing_left" type="text"/>
+                  <input id="ideal_pre_swing_left" name="ideal_pre_swing_left" value={inputValues.ideal_pre_swing_left} onChange={handleChange} type="number"/>
                 </td>
                
                
                 <td>
                   <label htmlFor="ideal_pre_swing_right">Initial Deviation From Ideal Pre Swing Right</label>
-                  <input id="ideal_pre_swing_right" type="text" />
+                  <input id="ideal_pre_swing_right"name="ideal_pre_swing_right" value={inputValues.ideal_pre_swing_right} onChange={handleChange} type="number" />
                 </td>
                 
                 <td>
                   <label htmlFor="ideal_swing_left">Initial Deviation From Ideal Swing Left</label>
-                  <input id="ideal_swing_left" type="text" />
+                  <input id="ideal_swing_left" name="ideal_swing_left" value={inputValues.ideal_swing_left} onChange={handleChange} type="number" />
                 </td>
                 <td>
-                  <label htmlFor="ideal_swing_left">Initial Deviation From Ideal Swing Right</label>
-                  <input id="ideal_swing_right" type="text" />
+                  <label htmlFor="ideal_swing_right">Initial Deviation From Ideal Swing Right</label>
+                  <input id="ideal_swing_right" name="ideal_swing_right" value={inputValues.ideal_swing_right} onChange={handleChange} type="number" />
                 </td>
               </tr>
              
@@ -240,181 +244,7 @@ function Tymo() {
           </table>
         </div>
 
-        {/* Center Pressure Parameter Details */}
-        {/* <div>
-          <h3>Center Pressure Parameter Details</h3>
-          <table style={{ width: "100%" }}>
-            <tbody>
-              <tr>
-                <td>
-                  <label htmlFor="distance">Distance</label>
-                </td>
-                <td>
-                  <label htmlFor="m1">M1</label>
-                  <input id="distanceM1" type="number" />
-                </td>
-                <td>
-                  <label htmlFor="m2">M2</label>
-                  <input id="distanceM2" type="number" />
-                </td>
-                <td>
-                  <label htmlFor="m3">M3</label>
-                  <input id="distanceM3" type="number" />
-                </td>
-                <td>
-                  <label htmlFor="m4">M4</label>
-                  <input id="distanceM4" type="number" />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label htmlFor="medialLateralDisplacement">Medial-Lateral Displacement</label>
-                </td>
-                <td>
 
-                  <input id="medialLateralDisplacementM1" type="number" />
-                </td>
-                <td>
-
-                  <input id="medialLateralDisplacementM2" type="number" />
-                </td>
-                <td>
-
-                  <input id="medialLateralDisplacementM3" type="number" />
-                </td>
-                <td>
-
-                  <input id="medialLateralDisplacementM4" type="number" />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label htmlFor="anteriorPosteriorDisplacement">Anterior-Posterior Displacement</label>
-                </td>
-                <td>
-
-                  <input id="anteriorPosteriorDisplacementM1" type="number" />
-                </td>
-                <td>
-
-                  <input id="anteriorPosteriorDisplacementM2" type="number" />
-                </td>
-                <td>
-
-                  <input id="anteriorPosteriorDisplacementM3" type="number" />
-                </td>
-                <td>
-
-                  <input id="anteriorPosteriorDisplacementM4" type="number" />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label htmlFor="swayArea">Sway Area</label>
-                </td>
-                <td>
-
-                  <input id="swayAreaM1" type="number" />
-                </td>
-                <td>
-
-                  <input id="swayAreaM2" type="number" />
-                </td>
-                <td>
-
-                  <input id="swayAreaM3" type="number" />
-                </td>
-                <td>
-
-                  <input id="swayAreaM4" type="number" />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label htmlFor="averageVelocity">Average Velocity</label>
-                </td>
-                <td>
-                  
-                  <input id="averageVelocityM1" type="number" />
-                </td>
-                <td>
-                  
-                  <input id="averageVelocityM2" type="number" />
-                </td>
-                <td>
-                 
-                  <input id="averageVelocityM3" type="number" />
-                </td>
-                <td>
-
-                  <input id="averageVelocityM4" type="number" />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label htmlFor="weightDistribution">Weight Distribution</label>
-                </td>
-                <td>
-                  
-                  <input id="weightDistributionM1" type="number" />
-                </td>
-                <td>
-                 
-                  <input id="weightDistributionM2" type="number" />
-                </td>
-                <td>
-
-                  <input id="weightDistributionM3" type="number" />
-                </td>
-                <td>
-                  
-                  <input id="weightDistributionM4" type="number" />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div> */}
-        {/* Additional Fields */}
-        {/* <div>
-          <h3>Additional Fields</h3>
-          <table style={{ width: "100%" }}>
-            <tbody>
-          {additionalFields.map((field, index) => (
-            
-            <div key={index}>
-              <strong>{field.label}:</strong>  <input
-              id={index}
-              type="text"
-              value={field.value}
-              style={{  width: "125px" , marginBottom:"25px"}}
-            />
-            </div>
-          ))}
-          </tbody>
-          </table>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <label htmlFor="newFieldLabel" style={{  marginTop: "20px" }}>Label:</label>
-            <input
-              id="newFieldLabel"
-              type="text"
-              value={newFieldLabel}
-              onChange={(e) => setNewFieldLabel(e.target.value)}
-              style={{  width: "125px" }}
-            />
-            <label htmlFor="newFieldValue" style={{  marginTop: "20px" }}>Value:</label>
-            <input
-              id="newFieldValue"
-              type="text"
-              value={newFieldValue}
-              onChange={(e) => setNewFieldValue(e.target.value)}
-              style={{  width: "125px" }}
-            />
-            <button style={{   height:"40px" }}onClick={handleAddField}>Add Field</button>
-          </div>
-        </div> */}
-
-
-        {/* Submit Button */}
         
         <div style={{  marginTop: "20px",marginBottom: "40px", display: "flex",alignItems: "center",justifyContent: "space-between" }}>
 
