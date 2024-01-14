@@ -6,7 +6,7 @@ import "../styles/Menu.css";
 
 
 
-function MenuItem({ image, title, text, to }) {
+function MenuItem({ image, title, text, to, backgroundColor }) {
   const linkStyle = {
     textDecoration: 'none', // Remove underline
     color: '#00345f', // Set text color
@@ -25,13 +25,13 @@ function MenuItem({ image, title, text, to }) {
    
     <Link to={to} style={linkStyle} className="menuCard">
       
-      <div className="menuItem">
+      <div className="menuItem" style={{ backgroundColor }}>
       
         <div style={{ backgroundImage: `url(${image})` }}> </div>
-        <p style={{ color: '#00345f' }}>{title}</p>
+        <p style={{ color: '#00345f', marginTop:"15px" }}>{title}</p>
         <div className="learnMoreLink" style={{border:"none"}}>
                   <p>
-                    Modailities{" "}
+                    Know More{" "}
                     <span
                       className="arrowSymbol"
                       onClick={() =>

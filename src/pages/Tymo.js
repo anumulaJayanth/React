@@ -4,6 +4,7 @@ import "../styles/Monoplegia.css";
 import { useHistory,Link } from "react-router-dom";
 import axios from 'axios';
 
+
 function Tymo() {
   const [inputValues, setInputValues] = useState({
     Diabetic:'',
@@ -31,6 +32,18 @@ function Tymo() {
 
 
   }); 
+
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+
   
   const history = useHistory();
   const handleRedirect = () => {
@@ -249,7 +262,23 @@ function Tymo() {
 
   <button onClick={handleBack}>Back</button>
   <button onClick={handleRedirect}>Process Inputs</button>
+  <div>
+      <button onClick={openModal}>Animate</button>
 
+      {isModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <span className="close-button" onClick={closeModal}>
+              &times;
+            </span>
+            <video width="700" height="500" controls autoPlay >
+              <source src="/Issue.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      )}
+    </div>
         </div>
        
       </div>

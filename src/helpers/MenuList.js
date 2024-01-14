@@ -23,6 +23,7 @@ export const MenuList = [
     title: "STROKE",
     text:"Read More",
     to:"Subtreatments",
+    backgroundColor:"black",
     
   },
   {
@@ -74,6 +75,7 @@ export const MenuList1 = [
     title: " CYBERDYNE HYBRID ASSISTED LIMB",
     text:"The main objective is to develop an AI/ML algorithm which helps in predicting the treatment",
     to:"Tymo",
+    backgroundColor:"black"
     
   },
   {
@@ -120,6 +122,7 @@ export const MenuList2 =[
     title: "GRIP ASSESSMENT",
     text:"The main objective is to develop an AI/ML algorithm which helps in predicting the treatment",
     to:"Tymo",
+    backgroundColor:"black"
   },
   {
     image:range,
