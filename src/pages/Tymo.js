@@ -54,7 +54,7 @@ function Tymo() {
         console.log('Server response:', response.data);
         history.push({
           pathname: '/Output',
-          state: { updatedData: response.data.updatedData },
+          state: { updatedData: response.data.updatedData,timeBetweenTests: inputValues.Time_Between_Tests,  },
         });
       })
       .catch(error => {

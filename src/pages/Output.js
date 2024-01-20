@@ -34,13 +34,16 @@ import {useHistory , Link} from "react-router-dom";
     const [output28, setOutput28] = useState('');
 
 
-  
+    const [timeBetweenTests, setTimeBetweenTests] = useState('');
     useEffect(() => {
       const receivedData = location.state.updatedData;
+      const receivedTimeBetweenTests = location.state.timeBetweenTests;
+      console.log('Received Time Between Tests:', receivedTimeBetweenTests);
+
   
       console.log('Received Data:', receivedData);
   
-      if (receivedData && receivedData.length === 28) {
+      if (receivedData && receivedData.length >= 3) {
         console.log('Updating State:', receivedData);
         setOutput1(String(receivedData[0]));
         setOutput2(String(receivedData[1]));
@@ -70,11 +73,12 @@ import {useHistory , Link} from "react-router-dom";
         setOutput26(String(receivedData[25]));
         setOutput27(String(receivedData[26]));
         setOutput28(String(receivedData[27]));
+        setTimeBetweenTests(parseInt(receivedTimeBetweenTests))
         
 
 
       }
-    }, [location.state.updatedData]);
+    }, [location.state.updatedData,location.state.timeBetweenTests]);
 
 
     const [isModalOpen, setModalOpen] = useState(false);
@@ -100,12 +104,8 @@ import {useHistory , Link} from "react-router-dom";
 
       <div className="Input_Area">
       <h2 style={{ textAlign: "center",padding:"10px",textDecoration:"underline" }}>Processed Outputs</h2>
-
-
-
         {/* Diseases Enquiry */}
         <div style={{ marginBottom: "20px",padding:"10px",marginTop:"20px" }}>
-         
           <table style={{ width: "100%" }}>
             <tbody>
               <tr>
@@ -242,18 +242,27 @@ import {useHistory , Link} from "react-router-dom";
 
 <button onClick={handleRedirect}>Back</button>
 <div>
-      <button onClick={openModal}>Animate</button>
+<button onClick={openModal}>Animate</button>
 
-      {isModalOpen && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <span className="close-button" onClick={closeModal}>
-              &times;
-            </span>
-            <video width="700" height="500" controls autoPlay >
-              <source src="/Normal.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+{isModalOpen && (
+  <div className="modal-overlay">
+    <div className="modal-content">
+      <span className="close-button" onClick={closeModal}>
+        &times;
+      </span>
+      <video width="700" height="500" controls autoPlay>
+        <source
+          src={
+            parseInt(timeBetweenTests) > 2
+              ? parseInt(timeBetweenTests) < 4
+                ? "/90per.mp4"
+                : "/issue.mp4"
+              : "/Normal.mp4"
+          }
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
           </div>
         </div>
       )}
