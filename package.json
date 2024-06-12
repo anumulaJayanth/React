@@ -25,6 +25,7 @@
   "scripts": {
     "start": "cross-env NODE_OPTIONS=--max-old-space-size=4096 react-scripts start",
     "build": "cross-env NODE_OPTIONS=--max-old-space-size=4096 react-scripts build",
+    "analyze": "react-scripts build && webpack-bundle-analyzer build/static/js/*.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
